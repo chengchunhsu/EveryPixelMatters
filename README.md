@@ -82,7 +82,7 @@ After the preparation, the dataset should be stored as follows:
 
 **Format and Path**
 
-Before the training, please checked [paths_catalog.py](https://github.com/chengchunhsu/EveryPixelMatters/blob/master/fcos_core/config/paths_catalog.py) and enter the correct data path for:
+Before training, please checked [paths_catalog.py](https://github.com/chengchunhsu/EveryPixelMatters/blob/master/fcos_core/config/paths_catalog.py) and enter the correct data path for:
 
 - `DATA_DIR`
 - `cityscapes_train_cocostyle` and `cityscapes_foggy_val_cocostyle` (for Cityscapes -> Foggy Cityscapes).
@@ -91,7 +91,7 @@ Before the training, please checked [paths_catalog.py](https://github.com/chengc
 
 
 
-For example, if the datasets have been stored as the way we mentioned, then the paths should be set as follows:
+For example, if the datasets have been stored as the way we mentioned, the paths should be set as follows:
 
 - Dataset directory (In L8):
 
@@ -99,7 +99,7 @@ For example, if the datasets have been stored as the way we mentioned, then the 
   DATA_DIR = [DATASET_PATH]
   ```
 
-- Train and validation set directory for each dataset (In L101~L120):
+- Train and validation set directory for each dataset:
 
   ```
   "cityscapes_train_cocostyle": {
