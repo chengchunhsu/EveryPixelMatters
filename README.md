@@ -85,9 +85,9 @@ After the preparation, the dataset should be stored as follows:
 Before training, please checked [paths_catalog.py](https://github.com/chengchunhsu/EveryPixelMatters/blob/master/fcos_core/config/paths_catalog.py) and enter the correct data path for:
 
 - `DATA_DIR`
-- `cityscapes_train_cocostyle` and `cityscapes_foggy_val_cocostyle` (for Cityscapes -> Foggy Cityscapes).
-- `sim10k_trainval_caronly`  and `cityscapes_fine_caronly_seg_val_cocostyle` (for Sim10k -> Cityscapes).
-- `kitti_train_caronly` and `cityscapes_fine_caronly_seg_val_cocostyle` (for KITTI -> Cityscapes).
+- `cityscapes_train_cocostyle`, `cityscapes_foggy_train_cocostyle` and `cityscapes_foggy_val_cocostyle` (for Cityscapes -> Foggy Cityscapes).
+- `sim10k_trainval_caronly`, `cityscapes_train_caronly_cocostyle` and `cityscapes_val_caronly_cocostyle` (for Sim10k -> Cityscapes).
+- `kitti_train_caronly`, `cityscapes_train_caronly_cocostyle` and `cityscapes_val_caronly_cocostyle` (for KITTI -> Cityscapes).
 
 
 
@@ -103,27 +103,35 @@ For example, if the datasets have been stored as the way we mentioned, the paths
 
   ```
   "cityscapes_train_cocostyle": {
-      "img_dir": "Cityscapess/leftImg8bit/train",
-      "ann_file": "Cityscapess/cocoAnnotations/cityscapes_train_cocostyle.json"
+      "img_dir": "Cityscapes/leftImg8bit/train",
+      "ann_file": "Cityscapes/cocoAnnotations/cityscapes_train_cocostyle.json"
   },
-  "cityscapes_foggy_val_cocostyle": {
-      "img_dir": "Cityscapess/leftImg8bit_foggy/val",
-      "ann_file": "Cityscapess/cocoAnnotations/cityscapes_foggy_val_cocostyle.json"
-  },
-  "sim10k_trainval_caronly": {
-      "data_dir": "Sim10k",
-      "split": "trainval10k_caronly"
+  "cityscapes_train_caronly_cocostyle": {
+      "img_dir": "Cityscapes/leftImg8bit/train",
+      "ann_file": "Cityscapes/cocoAnnotations/cityscapes_train_caronly_cocostyle.json"
   },
   "cityscapes_val_caronly_cocostyle": {
-      "img_dir": "Cityscapess/leftImg8bit/val",
-      "ann_file": "Cityscapess/cocoAnnotations/cityscapes_val_caronly_cocostyle.json"
+      "img_dir": "Cityscapes/leftImg8bit/val",
+      "ann_file": "Cityscapes/cocoAnnotations/cityscapes_val_caronly_cocostyle.json"
+  },
+  "cityscapes_foggy_train_cocostyle": {
+      "img_dir": "Cityscapes/leftImg8bit_foggy/train",
+      "ann_file": "Cityscapes/cocoAnnotations/cityscapes_foggy_train_cocostyle.json"
+  },
+  "cityscapes_foggy_val_cocostyle": {
+      "img_dir": "Cityscapes/leftImg8bit_foggy/val",
+      "ann_file": "Cityscapes/cocoAnnotations/cityscapes_foggy_val_cocostyle.json"
+  },
+  "sim10k_trainval_caronly": {
+    "data_dir": "Sim10k",
+      "split": "trainval10k_caronly"
   },
   "kitti_train_caronly": {
       "data_dir": "KITTI",
       "split": "train_caronly"
   },
   ```
-
+  
   
 
 **(Optional) Format Conversion**
@@ -239,7 +247,32 @@ Note that the optimizer and scheduler will not be loaded from the pre-trained we
 
 ## Evaluation
 
-The commands for evaluation are completely derived from FCOS ([\#f0a9731](https://github.com/tianzhi0549/FCOS/tree/f0a9731dac1346788cc30d5751177f2695caaa1f)).
+The trained model can be evaluated by the following command.
+
+```
+python tools/test_net.py \
+	--config-file [CONFIG_PATH] \
+	MODEL.WEIGHT [WEIGHT_PATH] \
+	TEST.IMS_PER_BATCH 4
+```
+
+- `[CONFIG_PATH]`: Path of config file
+- `[WEIGHT_PATH]`: Path of model weight for evaluation
+
+
+
+For example, the following command evaluates the model weight `vgg_cs.pth` for Cityscapes -> Foggy Cityscapes using VGG-16 backbone.
+
+```
+python tools/test_net.py \
+	--config-file configs/da_ga_ca_cityscapes_VGG_16_FPN_4x.yaml \
+	MODEL.WEIGHT "vgg_cs.pth" \
+	TEST.IMS_PER_BATCH 4
+```
+
+
+
+Note that the commands for evaluation are completely derived from FCOS ([\#f0a9731](https://github.com/tianzhi0549/FCOS/tree/f0a9731dac1346788cc30d5751177f2695caaa1f)).
 
 Please see [here](https://github.com/tianzhi0549/FCOS/tree/f0a9731dac1346788cc30d5751177f2695caaa1f#inference) for more details.
 
@@ -258,6 +291,14 @@ We provide the experimental results and model weights in this section.
 | KITTI -> Cityscapes            | VGG-16   | 18.2 | 44.3     | 10.8     | 6.2   | 22.0  | 37.1  | [link](https://drive.google.com/file/d/1HMVQ9eIvg3WV04PYjdh28gjPis19Q1OL/view?usp=sharing) | [link](https://drive.google.com/file/d/14VRyMA7ZCwrYjM5AYxnayRSbz9H_8mlJ/view?usp=sharing) |
 
 *Since the original model weight for KITTI dataset is inaccessible for now, we re-run the experiment and provide a similar (and even better) result in the table.
+
+
+
+Note that we use 4 GPUs for faster training. For fair comparison, we also report the results using only one GPU.
+
+| Dataset              | Backbone | mAP  | mAP@0.50 | mAP@0.75 | mAP@S | mAP@M | mAP@L | Model                                                        | Result                                                       |
+| -------------------- | -------- | ---- | -------- | -------- | ----- | ----- | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Sim10k -> Cityscapes | VGG-16   | 28.2 | 49.7     | 27.8     | 6.3   | 30.6  | 57.0  | [link](https://drive.google.com/file/d/1ty-YkQkjYdA2MePkAePrkEiSvaG66wro/view?usp=sharing) | [link](https://drive.google.com/file/d/1oihZDUl9BibUW10pip75kP1D6epwZevV/view?usp=sharing) |
 
 
 
