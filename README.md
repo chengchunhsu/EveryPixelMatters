@@ -8,9 +8,6 @@
 
 This project hosts the code for the implementation of **[Every Pixel Matters: Center-aware Feature Alignment for Domain Adaptive Object Detector](https://arxiv.org/pdf/2008.08574)** (ECCV 2020).
 
-The implementation of our anchor-free detector is heavily based on FCOS ([\#f0a9731](https://github.com/tianzhi0549/FCOS/tree/f0a9731dac1346788cc30d5751177f2695caaa1f)).
-
-
 
 ## Introduction
 
@@ -30,7 +27,7 @@ We demonstrate our method on numerous adaptation settings with extensive experim
 
 Check [INSTALL.md](https://github.com/chengchunhsu/EveryPixelMatters/blob/master/INSTALL.md) for installation instructions. 
 
-
+The implementation of our anchor-free detector is heavily based on FCOS ([\#f0a9731](https://github.com/tianzhi0549/FCOS/tree/f0a9731dac1346788cc30d5751177f2695caaa1f)).
 
 ## Dataset
 
