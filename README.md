@@ -164,6 +164,12 @@ Run the bash files directly:
   bash ./scripts/train_ga_resnet_cs.sh
   ```
 
+- (Optional) Using VGG-16 as backbone with single GPU
+
+  ```
+  bash ./scripts/single_gpu/train_ga_vgg_cs_single_gpu.sh
+  ```
+
   
 
 or type the bash commands:
@@ -188,7 +194,16 @@ or type the bash commands:
       --config-file ./configs/da_ga_cityscapes_R_101_FPN_4x.yaml
   ```
 
-  
+- (Optional) Using VGG-16 as backbone with single GPU
+
+  ```
+  python tools/train_net_da.py \
+      --config-file ./configs/da_ga_cityscapes_VGG_16_FPN_4x.yaml \
+      SOLVER.MAX_ITER 80000 \
+      SOLVER.IMS_PER_BATCH 4
+  ```
+
+
 
 **2. Training with both GA and CA module**
 
@@ -210,6 +225,12 @@ Run the bash files directly:
 
   ```
   bash ./scripts/train_ga_ca_resnet_cs.sh
+  ```
+
+- (Optional) Using VGG-16 as backbone with single GPU
+
+  ```
+  bash ./scripts/single_gpu/train_ga_ca_vgg_cs_single_gpu.sh
   ```
 
   
@@ -234,6 +255,15 @@ or type the bash commands:
       --master_port=$((RANDOM + 10000)) \
       tools/train_net_da.py \
       --config-file ./configs/da_ga_ca_cityscapes_R_101_FPN_4x.yaml
+  ```
+
+- (Optional) Using VGG-16 as backbone with single GPU
+
+  ```
+  python tools/train_net_da.py \
+      --config-file ./configs/da_ga_ca_cityscapes_VGG_16_FPN_4x.yaml \
+      SOLVER.MAX_ITER 80000 \
+      SOLVER.IMS_PER_BATCH 4
   ```
 
   
