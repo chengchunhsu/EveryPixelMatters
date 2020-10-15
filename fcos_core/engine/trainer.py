@@ -100,8 +100,8 @@ def do_train(
     data_loader_target = data_loader["target"]
 
     # classified label of source domain and target domain
-    source_label = 0.0
-    target_label = 1.0
+    source_label = 1.0
+    target_label = 0.0
 
     # dis_lambda
     if USE_DIS_GLOBAL:
