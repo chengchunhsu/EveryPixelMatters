@@ -37,17 +37,17 @@ We construct the training and testing set by three following settings:
 
 - Cityscapes -> Foggy Cityscapes
   - Download Cityscapes and Foggy Cityscapes dataset from the [link](https://www.cityscapes-dataset.com/downloads/). Particularly, we use *leftImg8bit_trainvaltest.zip* for Cityscapes and *leftImg8bit_trainvaltest_foggy.zip* for Foggy Cityscapes.
-  - Download and extract the converted annotation from the following links: [Cityscapes and Foggy Cityscapes (COCO format)](https://drive.google.com/file/d/1LRNXW2Wee8tjuxc5gjVsFQv49vA_SBtk/view?usp=sharing).
+  - Download and extract the converted annotation from the following links: [Cityscapes and Foggy Cityscapes (COCO format)](https://drive.google.com/file/d/1xgOK3K72sivuoS20OQVMYDKCj7yp3P9V/view?usp=sharing).
   - Extract the training sets from *leftImg8bit_trainvaltest.zip*, then move the folder `leftImg8bit/train/` to `Cityscapes/leftImg8bit/` directory.
   - Extract the training and validation set from *leftImg8bit_trainvaltest_foggy.zip*, then move the folder `leftImg8bit_foggy/train/` and `leftImg8bit_foggy/val/` to `Cityscapes/leftImg8bit_foggy/` directory.
 - Sim10k -> Cityscapes (class car only)
   - Download Sim10k dataset and Cityscapes dataset from the following links: [Sim10k](https://fcav.engin.umich.edu/projects/driving-in-the-matrix) and [Cityscapes](https://www.cityscapes-dataset.com/downloads/). Particularly, we use *repro_10k_images.tgz* and *repro_10k_annotations.tgz* for Sim10k and *leftImg8bit_trainvaltest.zip* for Cityscapes.
-  - Download and extract the converted annotation from the following links: [Sim10k (VOC format)](https://drive.google.com/file/d/1WoEPsG-u1aaGv-RiRy1b-ixtPYhsteVw/view?usp=sharing) and [Cityscapes (COCO format)](https://drive.google.com/file/d/1LRNXW2Wee8tjuxc5gjVsFQv49vA_SBtk/view?usp=sharing).
+  - Download and extract the converted annotation from the following links: [Sim10k (VOC format)](https://drive.google.com/file/d/1wyPaUSNA-owfikiewf0sgB8ShPX_df5c/view?usp=sharing) and [Cityscapes (COCO format)](https://drive.google.com/file/d/1xgOK3K72sivuoS20OQVMYDKCj7yp3P9V/view?usp=sharing).
   - Extract the training set from *repro_10k_images.tgz* and *repro_10k_annotations.tgz*, then move all images under `VOC2012/JPEGImages/` to `Sim10k/JPEGImages/` directory and move all annotations under `VOC2012/Annotations/` to `Sim10k/Annotations/`.
   - Extract the training and validation set from *leftImg8bit_trainvaltest.zip*, then move the folder `leftImg8bit/train/` and `leftImg8bit/val/` to `Cityscapes/leftImg8bit/` directory.
 - KITTI -> Cityscapes (class car only)
   - Download KITTI dataset and Cityscapes dataset from the following links: [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php?obj_benchmark=2d) and [Cityscapes](https://www.cityscapes-dataset.com/downloads/). Particularly, we use *data_object_image_2.zip* for KITTI and *leftImg8bit_trainvaltest.zip* for Cityscapes.
-  - Download and extract the converted annotation from the following links: [KITTI (VOC format)](https://drive.google.com/file/d/1_gAT2bCnR8js0Xo0EzHK7a_MS8xY833L/view?usp=sharing) and [Cityscapes (COCO format)](https://drive.google.com/file/d/1LRNXW2Wee8tjuxc5gjVsFQv49vA_SBtk/view?usp=sharing).
+  - Download and extract the converted annotation from the following links: [KITTI (VOC format)](https://drive.google.com/file/d/1-vWQ96Y7kxdvciLwx0DoJTJIWLZNfuv6/view?usp=sharing) and [Cityscapes (COCO format)](https://drive.google.com/file/d/1xgOK3K72sivuoS20OQVMYDKCj7yp3P9V/view?usp=sharing).
   - Extract the training set from *data_object_image_2.zip*, then move all images under `training/image_2/` to `KITTI/JPEGImages/` directory.
   - Extract the training and validation set from *leftImg8bit_trainvaltest.zip*, then move the folder `leftImg8bit/train/` and `leftImg8bit/val/` to `Cityscapes/leftImg8bit/` directory.
 
@@ -313,9 +313,9 @@ We provide the experimental results and model weights in this section.
 
 | Dataset                        | Backbone | mAP  | mAP@0.50 | mAP@0.75 | mAP@S | mAP@M | mAP@L | Model                                                        | Result                                                       |
 | ------------------------------ | -------- | ---- | -------- | -------- | ----- | ----- | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Cityscapes -> Foggy Cityscapes | VGG-16   | 19.6 | 36.0     | 18.1     | 2.8   | 17.9  | 38.1  | [link](https://drive.google.com/file/d/1JkVb3phHADbFag0CDjNHV-ugfXa53CAd/view?usp=sharing) | [link](https://drive.google.com/file/d/1HPtiKjsIedqXRoHlNioWBMh3wWn55mkX/view?usp=sharing) |
-| Sim10k -> Cityscapes           | VGG-16   | 25.2 | 49.0     | 24.8     | 6.0   | 27.8  | 51.0  | [link](https://drive.google.com/file/d/11GlyNlWUa8U3emRpImDxoFhd1dw4MOD9/view?usp=sharing) | [link](https://drive.google.com/file/d/1PHxkl-YPCsETRDqEWxgYboWwLXP_TkfD/view?usp=sharing) |
-| KITTI -> Cityscapes            | VGG-16   | 18.2 | 44.3     | 10.8     | 6.2   | 22.0  | 37.1  | [link](https://drive.google.com/file/d/1HMVQ9eIvg3WV04PYjdh28gjPis19Q1OL/view?usp=sharing) | [link](https://drive.google.com/file/d/14VRyMA7ZCwrYjM5AYxnayRSbz9H_8mlJ/view?usp=sharing) |
+| Cityscapes -> Foggy Cityscapes | VGG-16   | 19.6 | 36.0     | 18.1     | 2.8   | 17.9  | 38.1  | [link](https://drive.google.com/open?id=1KaGQ1gjojEAV1lQ8M6QX34GUBuKYRMU5&usp=drive_fs) | [link](https://drive.google.com/open?id=1LVYgmp0zOdXIjKgi3ktY6nfWHG34YfFi&usp=drive_fs) |
+| Sim10k -> Cityscapes           | VGG-16   | 25.2 | 49.0     | 24.8     | 6.0   | 27.8  | 51.0  | [link](https://drive.google.com/open?id=1KXf-7sN7jh6gOvPVr8JooB0T1nFZle2e&usp=drive_fs) | [link](https://drive.google.com/open?id=1LTMXnKy4W5BG3VzIz2JXYovSihP3id8F&usp=drive_fs) |
+| KITTI -> Cityscapes            | VGG-16   | 18.2 | 44.3     | 10.8     | 6.2   | 22.0  | 37.1  | [link](https://drive.google.com/open?id=1KcACd17Dm6DJSynG8kXepVhLMjrqm9LR&usp=drive_fs) | [link](https://drive.google.com/open?id=1LZ1cjQRttJo8ilgoqSW25q-fgXKRA6Nw&usp=drive_fs) |
 
 *Since the original model weight for KITTI dataset is inaccessible for now, we re-run the experiment and provide a similar (and even better) result in the table.
 
@@ -325,7 +325,7 @@ Note that we use 4 GPUs for faster training. For fair comparison, we also report
 
 | Dataset              | Backbone | mAP  | mAP@0.50 | mAP@0.75 | mAP@S | mAP@M | mAP@L | Model                                                        | Result                                                       |
 | -------------------- | -------- | ---- | -------- | -------- | ----- | ----- | ----- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Sim10k -> Cityscapes | VGG-16   | 28.2 | 49.7     | 27.8     | 6.3   | 30.6  | 57.0  | [link](https://drive.google.com/file/d/1ty-YkQkjYdA2MePkAePrkEiSvaG66wro/view?usp=sharing) | [link](https://drive.google.com/file/d/1oihZDUl9BibUW10pip75kP1D6epwZevV/view?usp=sharing) |
+| Sim10k -> Cityscapes | VGG-16   | 28.2 | 49.7     | 27.8     | 6.3   | 30.6  | 57.0  | [link](https://drive.google.com/open?id=1KZwQAtt_1B0CW9tXOBajkprK7gp1f7t3&usp=drive_fs) | [link](https://drive.google.com/open?id=1L_9GoGAKfdsYkqxTvAo6HB812H_to8oL&usp=drive_fs) |
 
 
 
